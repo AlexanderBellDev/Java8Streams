@@ -55,7 +55,16 @@ public class Main {
                      .filter(x -> x.contains("jit"))
                 .collect(Collectors.toList());
         bands2.forEach(System.out::println);
-         
+
+
+        //stream rows from csv file and count
+        Stream<String> rows1 = Files.lines(Paths.get("data.txt"));
+        int rowCount = (int) rows1
+                .map(x -> x.split(","))
+                .filter(x -> x.length ==3)
+                .count();
+        System.out.println("row count " + rowCount);
+        rows1.close();
     }
 
     public void intArray(){
